@@ -5,8 +5,8 @@ import { createReadStream, createWriteStream, mkdir } from 'fs';
 
 @Injectable()
 export class CryptographyService {
-  decrypt(file: string, algorithm: string, password: string): void {
-    var decipher = createDecipher(algorithm, password),
+  public decrypt(file: string, algorithm: string, password: string): void {
+    let decipher = createDecipher(algorithm, password),
       decipherName = createDecipher(algorithm, password),
       decryptedFileName,
       encrypted,
@@ -30,8 +30,8 @@ export class CryptographyService {
       .pipe(decipher)
       .pipe(decrypted);
   }
-  encrypt(file: string, algorithm: string, password: string): void {
-    var cipher = createCipher(algorithm, password),
+  public encrypt(file: string, algorithm: string, password: string): void {
+    let cipher = createCipher(algorithm, password),
       cipherName = createCipher(algorithm, password),
       encryptedFileName,
       decrypted,

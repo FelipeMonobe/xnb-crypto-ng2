@@ -18,13 +18,13 @@ export class CryptographyComponent {
   private granularity: string;
   private paths: Array<string> = [''];
 
-  constructor(private _cryptographyService: CryptographyService,
+  public constructor(private _cryptographyService: CryptographyService,
     private _settingsService: SettingsService) { }
 
-  choose(): void {
+  private choose(): void {
     this.paths = ['/home/xinube/Documents/Testes/xnb-crypto/'];
   }
-  execute(): void {
+  private execute(): void {
     let files, inputPath;
 
     this.paths.forEach((path) => {

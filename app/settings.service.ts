@@ -13,15 +13,15 @@ const constants = require('./app.constants.json'),
 
 @Injectable()
 export class SettingsService implements OnInit {
-  appSettings: any;
-  defaultAction: string;
-  defaultAlgorithm: string;
-  defaultFolder: string;
-  defaultPassword: string;
+  public appSettings: any;
+  public defaultAction: string;
+  public defaultAlgorithm: string;
+  public defaultFolder: string;
+  public defaultPassword: string;
 
-  constructor(private _localStorageService: LocalStorageService) { }
+  public constructor(private _localStorageService: LocalStorageService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.appSettings = localStorage['app_settings'] !== undefined ?
       this._localStorageService.getObject('app_settings') :
       settingsObject;
@@ -35,7 +35,7 @@ export class SettingsService implements OnInit {
     this.defaultPassword = this.appSettings.defaults.password;
   }
 
-  setDefault(type: string, value: string): void {
+  public setDefault(type: string, value: string): void {
     this._localStorageService
       .updateObject('app_settings.defaults.' + type, value);
   }
