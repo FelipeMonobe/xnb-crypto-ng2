@@ -36,7 +36,11 @@ export class SettingsService implements OnInit {
   }
 
   public setDefault(type: string, value: string): void {
-    this._localStorageService
-      .updateObject('app_settings.defaults.' + type, value);
+    try {
+      this._localStorageService
+      .updateObject(`app_settings.defaults.${type}`, value);
+    } catch(e) {
+      console.log(`Unable to set ${value} as new ${type} default.\n${e}`);
+    }
   }
 }
