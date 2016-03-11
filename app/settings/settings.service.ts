@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from 'angular2/core';
-import { LocalStorageService } from './localStorage.service';
+import { LocalStorageService } from '../shared/localStorage.service';
 
 const constants = require('./app.constants.json'),
   settingsObject = {

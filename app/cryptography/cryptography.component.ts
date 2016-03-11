@@ -1,8 +1,8 @@
 import { readdirSync } from 'fs';
 import { Component } from 'angular2/core';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
-import { SettingsService } from './settings.service';
 import { CryptographyService } from './cryptography.service';
+import { SettingsService } from '../settings/settings.service';
 import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 

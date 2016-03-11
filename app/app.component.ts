@@ -1,14 +1,14 @@
-import { SettingsComponent } from './settings.component';
 import { Component, enableProdMode } from 'angular2/core';
-import { CryptographyComponent } from './cryptography.component';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { SettingsComponent } from './settings/settings.component';
+import { CryptographyComponent } from './cryptography/cryptography.component';
 
 enableProdMode();
 
 @Component({
   selector: 'xnb-crypto-ng2',
   template: '<router-outlet></router-outlet>',
-  directives: [ROUTER_DIRECTIVES, CryptographyComponent, SettingsComponent],
+  directives: [ROUTER_DIRECTIVES],
 })
 
 @RouteConfig([

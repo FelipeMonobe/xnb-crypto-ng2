@@ -42,7 +42,8 @@
         <label>Paths</label>
         <br>
         <button type="button" class="btn btn-default" (click)="choose();" [disabled]="granularity === undefined">
-          Choose {{granularity}}
+          Choose
+          {{granularity}}
         </button>
         <span *ngFor="#path of paths">{{path}}</span>
       </div>
