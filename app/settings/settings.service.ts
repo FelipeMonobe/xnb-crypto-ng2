@@ -1,7 +1,7 @@
-import { Injectable, OnInit } from 'angular2/core';
+import { Injectable } from 'angular2/core';
 import { LocalStorageService } from '../shared/services/localStorage.service';
 
-const constants = require('./app.constants.json'),
+const constants = require('../app.constants.json'),
   settingsObject = {
     "defaults": {
       "action": constants.ACTION,
@@ -12,16 +12,16 @@ const constants = require('./app.constants.json'),
   };
 
 @Injectable()
-export class SettingsService implements OnInit {
+export class SettingsService {
   public appSettings: any;
   public defaultAction: string;
   public defaultAlgorithm: string;
   public defaultFolder: string;
   public defaultPassword: string;
 
-  public constructor(private _localStorageService: LocalStorageService) { }
+  public constructor(private _localStorageService: LocalStorageService) { this.init(); }
 
-  public ngOnInit(): void {
+  private init(): void {
     this.appSettings = localStorage['app_settings'] !== undefined ?
       this._localStorageService.getObject('app_settings') :
       settingsObject;
@@ -38,8 +38,8 @@ export class SettingsService implements OnInit {
   public setDefault(type: string, value: string): void {
     try {
       this._localStorageService
-      .updateObject(`app_settings.defaults.${type}`, value);
-    } catch(e) {
+        .updateObject(`app_settings.defaults.${type}`, value);
+    } catch (e) {
       console.log(`Unable to set ${value} as new ${type} default.\n${e}`);
     }
   }

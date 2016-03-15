@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "system",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -11,8 +11,10 @@
     "listFiles": true
   },
   "files": [
-    "typings/browser/**/*.d.ts",
-    "typings/browser.d.ts",
-    "app/main.ts"
-  ]
+    "app/main.ts",
+    "typings/browser.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }

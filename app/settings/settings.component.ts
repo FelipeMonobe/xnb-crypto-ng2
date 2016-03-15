@@ -1,29 +1,26 @@
-import { Router } from  'angular2/router'
-import { Component, OnInit } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { SettingsService } from './settings.service';
+import { Router, ROUTER_DIRECTIVES } from  'angular2/router'
+import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+import { LocalStorageService } from '../shared/services/localStorage.service';
 
 @Component({
   selector: 'settings',
-  templateUrl: 'app/settings.component.html'
+  templateUrl: 'app/settings/settings.component.html',
+  directives: [ROUTER_DIRECTIVES, BUTTON_DIRECTIVES],
+  providers: [SettingsService, LocalStorageService]
 })
 
-export class SettingsComponent implements OnInit {
-  private action: string;
-  private algorithm: string;
-  private folder: string;
-  private password: string;
+export class SettingsComponent {
+  private action: string = this._settingsService.defaultAction;
+  private algorithm: string = this._settingsService.defaultAlgorithm;
+  private folder: string = this._settingsService.defaultFolder;
+  private password: string = this._settingsService.defaultPassword;
   private isAllSet: boolean = false;
 
   public constructor(
     private _router: Router,
     private _settingsService: SettingsService) { }
-
-  public ngOnInit(): void {
-    this.action = this._settingsService.defaultAction;
-    this.algorithm = this._settingsService.defaultAlgorithm;
-    this.folder = this._settingsService.defaultFolder;
-    this.password = this._settingsService.defaultPassword;
-  }
 
   private saveSettings(): void {
     try {
