@@ -28,8 +28,8 @@ function createWindow() {
   ipcMain.on('requestDialog', function(event) {
     dialog.showOpenDialog(null, {
       properties: ['openFile', 'openDirectory']
-    }, (paths) => {
-      event.sender.send('responseDialog', paths);
+    }, (response) => {
+      event.sender.send('responseDialog', response);
     });
   });
 }

@@ -1,7 +1,7 @@
 import { readdirSync } from 'fs';
 import { ipcRenderer } from 'electron';
-import { Component } from 'angular2/core';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { Component, OnInit, NgZone } from 'angular2/core';
 import { CryptographyService } from './cryptography.service';
 import { SettingsService } from '../settings/settings.service';
 import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
@@ -16,21 +16,25 @@ import { LocalStorageService } from '../shared/services/localStorage.service';
   providers: [CryptographyService, SettingsService, LocalStorageService]
 })
 
-export class CryptographyComponent {
+export class CryptographyComponent implements OnInit {
   private action: string = this._settingsService.defaultAction;
   private granularity: string;
   private paths: Array<string> = [this._settingsService.defaultFolder];
 
   public constructor(private _cryptographyService: CryptographyService,
-    private _settingsService: SettingsService) { }
+    private _settingsService: SettingsService,
+    private _zone: NgZone) { }
+
+  public ngOnInit(): void {
+    ipcRenderer.on('responseDialog', (event, response) => {
+      this._zone.run(() => { this.paths = response; });
+    });
+  }
 
   private choose(): void {
-    ipcRenderer.on('responseDialog', function(event, paths) {
-      this.paths = paths;
-    });
-
     ipcRenderer.send('requestDialog');
   }
+
   private execute(): void {
     let files, inputPath;
 
