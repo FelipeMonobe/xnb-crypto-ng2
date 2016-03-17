@@ -10,7 +10,7 @@ import { LocalStorageService } from '../shared/services/localStorage.service';
 
 @Component({
   selector: 'cryptography',
-  templateUrl: './app/cryptography/cryptography.component.html',
+  templateUrl: 'cryptography/cryptography.component.html',
   directives: [BUTTON_DIRECTIVES, ROUTER_DIRECTIVES,
     CORE_DIRECTIVES, FORM_DIRECTIVES],
   providers: [CryptographyService, SettingsService, LocalStorageService]

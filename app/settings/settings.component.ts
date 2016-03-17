@@ -6,7 +6,7 @@ import { LocalStorageService } from '../shared/services/localStorage.service';
 
 @Component({
   selector: 'settings',
-  templateUrl: 'app/settings/settings.component.html',
+  templateUrl: 'settings/settings.component.html',
   directives: [ROUTER_DIRECTIVES, BUTTON_DIRECTIVES],
   providers: [SettingsService, LocalStorageService]
 })

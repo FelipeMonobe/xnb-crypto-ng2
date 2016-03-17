@@ -13,8 +13,5 @@
   "files": [
     "app/main.ts",
     "typings/browser.d.ts"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  }
+  ]
 }
