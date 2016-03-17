@@ -1,5 +1,5 @@
-import { readdirSync } from 'fs';
 import { ipcRenderer } from 'electron';
+import { readdirSync, mkdir } from 'fs';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 import { Component, OnInit, NgZone } from 'angular2/core';
 import { CryptographyService } from './cryptography.service';
@@ -40,6 +40,12 @@ export class CryptographyComponent implements OnInit {
 
     this.paths.forEach((path) => {
       files = readdirSync(path);
+
+      if (this.action === 'Encrypt') {
+        !files.find(x => x === 'encrypted') && mkdir(path + '/encrypted');
+        files = files.filter((f) => { return /.+\.[a-z]{2,4}$/.test(f); });
+      }
+
       files.forEach((file) => {
         inputPath = `${path}/${file}`;
 

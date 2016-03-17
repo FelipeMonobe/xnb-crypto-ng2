@@ -1,7 +1,7 @@
 import { ipcRenderer } from 'electron';
 import { Injectable } from 'angular2/core';
 import { createCipher, createDecipher } from 'crypto';
-import { createReadStream, createWriteStream, mkdir } from 'fs';
+import { createReadStream, createWriteStream } from 'fs';
 
 @Injectable()
 export class CryptographyService {
@@ -43,8 +43,6 @@ export class CryptographyService {
     pathArray = file.split('/');
     fileName = pathArray.pop();
     path = pathArray.join('/') + '/encrypted';
-
-    mkdir(path);
 
     encryptedFileName = cipherName.update(fileName, 'utf8', 'hex');
     encryptedFileName += cipherName.final('hex');
